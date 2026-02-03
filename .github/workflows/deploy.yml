@@ -20,4 +20,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # ⚠️ 下記の　lp以降のフォルダ名(赤********)が送る場所の設定です
           server-dir: /houseinfo/lp/anet01/
----------------ここまでをコピペ-----------------
