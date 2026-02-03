@@ -120,7 +120,7 @@
         @media (max-width: 768px) {
             .parallax-bg-text {
                 font-size: 40vw;
-                opacity: 0.5;
+                opacity: 0.3;
             }
         }
 
@@ -161,10 +161,10 @@
     <!-- Header -->
     <header class="fixed w-full z-50 px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center bg-opacity-95 bg-[#2C3E50] border-b border-white border-opacity-5">
         <a href="http://a-netnavi.jp/" class="flex flex-col hover:opacity-70 transition-opacity group">
-            <span class="text-xs md:text-xl font-black tracking-tighter leading-none text-white">
+            <span class="text-sm lg:text-xl font-black tracking-tighter leading-none text-white">
                 （一社）建築家ネットワーク・ナビ
             </span>
-            <span class="text-[8px] md:text-[10px] gold-text font-bold tracking-[0.2em] mt-1 flex items-center">
+            <span class="text-[9px] md:text-[10px] gold-text font-bold tracking-[0.3em] mt-1 flex items-center">
                 公式サイトはこちら
                 <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </span>
@@ -205,8 +205,8 @@
     <section id="problem" class="py-24 md:py-32 px-6 max-w-7xl mx-auto relative z-10">
         <span class="section-title text-center">01. 建築家の現実</span>
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-            <!-- スマホ時にstickyを解除し、マージンを追加 -->
-            <div class="lg:sticky lg:top-32 mb-12 lg:mb-0 z-20">
+            <!-- 修正: lg以上の時のみstickyにし、スマホではstatic（通常配置）にする -->
+            <div class="relative static lg:sticky lg:top-32 mb-12 lg:mb-0 z-20">
                 <h2 class="font-heading text-4xl md:text-6xl mb-8 md:mb-10 leading-tight text-white">
                     本当は、<br>
                     <span class="text-highlight">「設計の話」</span>から<br>始めたい。
@@ -376,7 +376,8 @@
     <!-- FAQ Section -->
     <section id="faq" class="py-24 md:py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-8">
+            <!-- 修正: スマホ表示でセンター揃えにするため items-center text-center を追加 -->
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-8 text-center md:text-left">
                 <div>
                     <span class="section-title mb-4">03. よくあるご質問</span>
                     <h2 class="font-heading text-4xl md:text-6xl italic text-white">FAQ</h2>
