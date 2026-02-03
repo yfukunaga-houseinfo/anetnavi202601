@@ -1,0 +1,23 @@
+name: Deploy to Lolipop Test
+
+on:
+  push:
+    branches:
+      - main  # mainブランチに更新（保存）があったら実行
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # ⚠️ 下記の　lp以降のフォルダ名(赤********)が送る場所の設定です
+          server-dir: /houseinfo/lp/anet01/
+---------------ここまでをコピペ-----------------
