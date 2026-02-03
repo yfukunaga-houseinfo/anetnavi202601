@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建築家ネットワーク・ナビ | 設計に集中したい建築家のための裏方パートナー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --accent: #DAA520;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--primary);
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* 幾何学的グリッド背景 */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Kinetic Typography Effect */
+        .hero-text {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            transition: transform 0.1s ease-out;
+        }
+
+        .kinetic-char {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Bento UI FAQ */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .bento-card:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accent-text {
+            color: var(--accent);
+        }
+
+        .gold-button {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gold-button:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        .blueprint-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        /* Section Specifics */
+        .section-padding {
+            padding: 8rem 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-opacity-90 backdrop-blur-md">
+        <div class="text-xl font-bold tracking-tighter">
+            ARCHITECT <span class="accent-text">NAVIGATOR</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+            <a href="#about" class="hover:text-[#DAA520] transition">Concept</a>
+            <a href="#solution" class="hover:text-[#DAA520] transition">Solution</a>
+            <a href="#faq" class="hover:text-[#DAA520] transition">FAQ</a>
+        </nav>
+        <a href="#contact" class="gold-button px-6 py-2 text-xs uppercase tracking-widest">Join Us</a>
+    </header>
+
+    <!-- Hero Section: Kinetic Typography -->
+    <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-20">
+        <div class="text-center">
+            <p class="text-sm uppercase tracking-[0.5em] mb-8 opacity-60 reveal">Professional Partner for Architects</p>
+            <h1 class="hero-text mb-6" id="kineticHero">
+                <span class="kinetic-char">設</span><span class="kinetic-char">計</span>に<br>
+                <span class="kinetic-char accent-text">集</span><span class="kinetic-char accent-text">中</span>したい。
+            </h1>
+            <p class="text-lg md:text-2xl max-w-2xl mx-auto opacity-80 reveal" style="transition-delay: 0.2s;">
+                設計以外の負担を手放し、<br class="md:hidden">住宅設計を続けるための仕組み
+            </p>
+            <div class="mt-12 reveal" style="transition-delay: 0.4s;">
+                <a href="#contact" class="gold-button px-10 py-5 text-lg inline-block">
+                    登録建築家について詳しく知る →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empathy Section: The Reality -->
+    <section id="about" class="section-padding bg-white text-[#2C3E50]">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 leading-tight">
+                    それなのに、<br>
+                    <span class="text-gray-400">設計以外の仕事が増えていく。</span>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <p class="text-lg leading-relaxed">
+                        住宅設計にこそ、建築家の思想や美意識は最も色濃く表れます。一方で現実には、設計以外の業務が、その時間を確実に奪っていきます。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 border-b border-gray-200 pb-2">
+                            <span class="text-accent font-bold">01</span>
+                            <span>土地が決まらない焦り</span>
+                        </div>
+                        <div class="flex items-center space-x-4 border-b border-gray-200 pb-2">
+                            <span class="text-accent font-bold">02</span>
+                            <span>曖昧な予算での進行</span>
+                        </div>
+                        <div class="flex items-center space-x-4 border-b border-gray-200 pb-2">
+                            <span class="text-accent font-bold">03</span>
+                            <span>住宅ローンの調整業務</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center reveal">
+                <p class="text-xl italic">
+                    本当は「設計の話」から始めたい。
+                </p>
+                <div class="blueprint-line"></div>
+                <p class="mt-8 text-gray-500">
+                    これは、多くの住宅系アトリエ建築家が抱える共通の悩みです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Structure -->
+    <section class="section-padding relative">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold mb-8 italic accent-text">Structure of Problem</h2>
+                <h3 class="text-2xl font-bold mb-6">なぜ個人では限界なのか</h3>
+                <p class="opacity-80 leading-relaxed mb-6">
+                    住宅設計の現場では、建築家が「設計者」であると同時に、営業・資金相談・土地選定・調整役まで担っています。
+                </p>
+                <p class="opacity-80 leading-relaxed">
+                    しかし本来、設計の質と、営業や資金調整の能力は別物です。優れた建築家ほど、設計に時間を使いたいと考えるのは自然なことです。
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4 reveal">
+                <div class="aspect-square border border-white/20 p-6 flex flex-col justify-end">
+                    <span class="text-3xl font-bold accent-text mb-2">Issue 1</span>
+                    <span class="text-sm">設計時間の不足</span>
+                </div>
+                <div class="aspect-square border border-white/20 p-6 flex flex-col justify-end bg-white/5">
+                    <span class="text-3xl font-bold accent-text mb-2">Issue 2</span>
+                    <span class="text-sm">契約率の不安定さ</span>
+                </div>
+                <div class="aspect-square border border-white/20 p-6 flex flex-col justify-end bg-white/5">
+                    <span class="text-3xl font-bold accent-text mb-2">Issue 3</span>
+                    <span class="text-sm">設計料の頭打ち</span>
+                </div>
+                <div class="aspect-square border border-white/20 p-6 flex flex-col justify-end">
+                    <span class="text-3xl font-bold accent-text mb-2">Final</span>
+                    <span class="text-sm">構造的疲弊</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section-padding bg-zinc-900">
+        <div class="max-w-5xl mx-auto text-center mb-20">
+            <h2 class="text-sm tracking-[0.5em] accent-text mb-4 uppercase">Our Role</h2>
+            <h3 class="text-4xl font-bold">建築家ネットワーク・ナビの役割</h3>
+            <div class="blueprint-line"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="p-8 border border-white/10 reveal" style="transition-delay: 0.1s;">
+                <h4 class="text-xl font-bold mb-4 accent-text">土地・条件整理</h4>
+                <p class="text-sm opacity-70">難航する土地探しや、クライアントの複雑な要望を、設計が始められる形へ整えます。</p>
+            </div>
+            <div class="p-8 border border-white/10 reveal" style="transition-delay: 0.2s;">
+                <h4 class="text-xl font-bold mb-4 accent-text">資金・ローン相談</h4>
+                <p class="text-sm opacity-70">予算の不透明さを解消。住宅ローンを含む資金計画の調整をプロが代行します。</p>
+            </div>
+            <div class="p-8 border border-white/10 reveal" style="transition-delay: 0.3s;">
+                <h4 class="text-xl font-bold mb-4 accent-text">初期調整</h4>
+                <p class="text-sm opacity-70">クライアントとの初期段階の意思疎通を担い、円滑な設計契約へと導きます。</p>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center reveal">
+            <p class="text-2xl font-light">
+                建築家は、<span class="font-bold accent-text italic">「設計が始まるべきタイミング」</span>で参加。
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature: Direct support -->
+    <section class="section-padding border-y border-white/10">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 reveal">
+                <h3 class="text-3xl font-bold mb-6">紹介案件だけでなく、<br><span class="accent-text">直接依頼の案件も。</span></h3>
+                <p class="opacity-80 leading-relaxed">
+                    私たちが提供するのは、単なる案件紹介ではありません。建築家ご自身に直接依頼があった案件に対しても、地域ナビが裏方として実務をサポートします。
+                </p>
+            </div>
+            <div class="flex-1 bg-white p-8 text-[#2C3E50] rounded-sm reveal" style="transition-delay: 0.2s;">
+                <p class="text-sm font-bold border-l-4 border-accent pl-4">PARTNER BENEFIT</p>
+                <ul class="mt-6 space-y-4 font-bold">
+                    <li>・今の仕事の質を高める</li>
+                    <li>・無理なく続ける体制づくり</li>
+                    <li>・本質的な対話への集中</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section: Bento UI -->
+    <section id="faq" class="section-padding">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">よくあるご質問 <span class="accent-text font-serif italic ml-2">FAQ</span></h2>
+            
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-card reveal">
+                    <span class="text-accent text-xs tracking-widest uppercase mb-4 block">Role</span>
+                    <h4 class="font-bold mb-4">Q. 営業代行組織ですか？</h4>
+                    <p class="text-sm opacity-70">いいえ。営業の代行や押し付けは行いません。地域ナビは、設計以外の実務を裏方として支える役割です。</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bento-card reveal" style="transition-delay: 0.1s;">
+                    <span class="text-accent text-xs tracking-widest uppercase mb-4 block">Scope</span>
+                    <h4 class="font-bold mb-4">Q. 紹介案件しかサポートしないのですか？</h4>
+                    <p class="text-sm opacity-70">いいえ。当法人紹介の案件だけでなく、建築家ご自身が直接受けた依頼もサポート対象です。</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bento-card reveal md:col-span-2" style="transition-delay: 0.2s;">
+                    <span class="text-accent text-xs tracking-widest uppercase mb-4 block">Details</span>
+                    <h4 class="font-bold mb-4">Q. 具体的に何をサポートしてくれますか？</h4>
+                    <p class="text-sm opacity-70">土地探し、条件整理、資金計画、住宅ローン相談、初期調整など、設計以外の実務全般です。設計に入る前の煩雑なフェーズをすべてお任せいただけます。</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bento-card reveal" style="transition-delay: 0.3s;">
+                    <span class="text-accent text-xs tracking-widest uppercase mb-4 block">Freedom</span>
+                    <h4 class="font-bold mb-4">Q. 設計の自由度は制限されますか？</h4>
+                    <p class="text-sm opacity-70">一切ありません。設計内容や思想は、すべて建築家に委ねられます。私たちはあくまでサポート役です。</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bento-card reveal" style="transition-delay: 0.4s;">
+                    <span class="text-accent text-xs tracking-widest uppercase mb-4 block">Cost</span>
+                    <h4 class="font-bold mb-4">Q. 手数料やロイヤリティは発生しますか？</h4>
+                    <p class="text-sm opacity-70">詳細は面談でご説明しますが、設計料を圧迫する仕組みではありません。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="section-padding bg-white text-[#2C3E50] text-center overflow-hidden relative">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight reveal">
+                一人で抱えない住宅設計を、<br><span class="accent-text italic">次のスタンダードへ。</span>
+            </h2>
+            <p class="mb-12 text-lg opacity-70 reveal">
+                設計に集中したい。働き方を変えたい。<br>
+                そう考える建築家の方を募集しています。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6 reveal">
+                <a href="#" class="gold-button px-12 py-6 text-xl">面談・説明を申し込む</a>
+                <a href="#" class="border-2 border-[#2C3E50] px-12 py-6 text-xl font-bold hover:bg-[#2C3E50] hover:text-white transition">資料をダウンロード</a>
+            </div>
+        </div>
+        <!-- Decorative text bg -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15rem] font-black opacity-[0.03] select-none pointer-events-none whitespace-nowrap">
+            ARCHITECT FOCUS
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-white/5 opacity-40 text-xs flex flex-col md:flex-row justify-between items-center gap-6">
+        <p>© 建築家ネットワーク・ナビ All Rights Reserved.</p>
+        <div class="flex space-x-8">
+            <a href="#">運営法人</a>
+            <a href="#">プライバシーポリシー</a>
+            <a href="#">利用規約</a>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal Animations on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Kinetic Typography Scroll Effect
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            const chars = document.querySelectorAll('.kinetic-char');
+            
+            chars.forEach((char, index) => {
+                const speed = (index + 1) * 0.1;
+                const yPos = Math.sin(scrollPercent * 5 + index) * 20;
+                const rotation = scrollPercent * 30 * (index % 2 === 0 ? 1 : -1);
+                
+                // Only animate significantly in the hero section
+                if (window.scrollY < window.innerHeight) {
+                    char.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
+                } else {
+                    char.style.transform = `translateY(0) rotate(0)`;
+                }
+            });
+        });
+
+        // Initial animation trigger
+        window.onload = () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
