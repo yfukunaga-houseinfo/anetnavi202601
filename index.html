@@ -12,12 +12,12 @@
         :root {
             --main-dark: #2C3E50;
             --accent-gold: #DAA520;
-            --text-gray: #E0E0E0;
+            --text-white: #F5F5F5;
         }
 
         body {
             background-color: var(--main-dark);
-            color: var(--text-gray);
+            color: var(--text-white);
             font-family: 'Noto Sans JP', sans-serif;
             overflow-x: hidden;
             line-height: 1.8;
@@ -32,20 +32,17 @@
             background-size: 50px 50px;
         }
 
-        /* 太めゴシックのインパクト用クラス */
         .font-heading {
             font-weight: 900;
             letter-spacing: -0.02em;
         }
 
-        /* Kinetic Typography アニメーション */
         .kinetic-text {
             display: inline-block;
             transition: transform 0.1s ease-out;
             will-change: transform;
         }
 
-        /* スクロール連動アニメーション用クラス */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -57,13 +54,14 @@
             transform: translateY(0);
         }
 
-        /* Bento UI スタイル */
         .bento-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(218, 165, 32, 0.1);
             padding: 2.5rem 2rem;
             border-radius: 4px;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
         }
 
         .bento-card:hover {
@@ -75,7 +73,6 @@
         .gold-text { color: var(--accent-gold); }
         .gold-border { border-color: var(--accent-gold); }
 
-        /* 特殊装飾 */
         .vertical-line {
             width: 1px;
             height: 80px;
@@ -83,7 +80,6 @@
             margin: 0 auto;
         }
 
-        /* セクションタイトル */
         .section-title {
             font-size: 0.75rem;
             font-weight: 700;
@@ -94,7 +90,6 @@
             display: block;
         }
 
-        /* ボタン */
         .cta-button {
             background: var(--accent-gold);
             color: var(--main-dark);
@@ -111,19 +106,24 @@
             transform: scale(1.02);
         }
 
-        /* パララックス装飾 */
         .parallax-bg-text {
             position: absolute;
-            font-size: 20vw;
+            font-size: 25vw;
             font-weight: 900;
-            color: rgba(255, 255, 255, 0.015);
+            color: rgba(255, 255, 255, 0.012);
             z-index: -1;
             white-space: nowrap;
             pointer-events: none;
             line-height: 1;
         }
 
-        /* テキストハイライト */
+        @media (max-width: 768px) {
+            .parallax-bg-text {
+                font-size: 40vw;
+                opacity: 0.5;
+            }
+        }
+
         .text-highlight {
             position: relative;
             z-index: 1;
@@ -139,7 +139,6 @@
             z-index: -1;
         }
 
-        /* アコーディオンのスタイル */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -160,17 +159,17 @@
 <body class="bg-grid">
 
     <!-- Header -->
-    <header class="fixed w-full z-50 px-8 py-6 flex justify-between items-center bg-opacity-95 bg-[#2C3E50] border-b border-white border-opacity-5">
+    <header class="fixed w-full z-50 px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center bg-opacity-95 bg-[#2C3E50] border-b border-white border-opacity-5">
         <a href="http://a-netnavi.jp/" class="flex flex-col hover:opacity-70 transition-opacity group">
-            <span class="text-sm md:text-xl font-black tracking-tighter leading-none">
+            <span class="text-xs md:text-xl font-black tracking-tighter leading-none text-white">
                 （一社）建築家ネットワーク・ナビ
             </span>
-            <span class="text-[9px] md:text-[10px] gold-text font-bold tracking-[0.3em] mt-1 flex items-center">
+            <span class="text-[8px] md:text-[10px] gold-text font-bold tracking-[0.2em] mt-1 flex items-center">
                 公式サイトはこちら
                 <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </span>
         </a>
-        <nav class="hidden md:flex gap-10 text-[11px] font-bold tracking-[0.15em]">
+        <nav class="hidden md:flex gap-6 lg:gap-10 text-[11px] font-bold tracking-[0.15em] text-white">
             <a href="#problem" class="hover:text-gold transition">建築家の課題</a>
             <a href="#solution" class="hover:text-gold transition">私たちの役割</a>
             <a href="#faq" class="hover:text-gold transition">よくあるご質問</a>
@@ -182,12 +181,12 @@
     <section class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-4">
         <div class="parallax-bg-text" id="bg-text-1">CORE</div>
         <div class="text-center z-10">
-            <p class="reveal text-xs font-bold tracking-[0.6em] mb-10 uppercase gold-text">Focus on your Design</p>
-            <h1 class="font-heading text-6xl md:text-[10rem] leading-[0.9] mb-10">
+            <p class="reveal text-[10px] md:text-xs font-bold tracking-[0.6em] mb-6 md:mb-10 uppercase gold-text">Focus on your Design</p>
+            <h1 class="font-heading text-5xl md:text-[10rem] leading-[1.1] md:leading-[0.9] mb-8 md:mb-10 text-white">
                 <span class="kinetic-text" data-speed="0.12">設計に</span><br>
                 <span class="kinetic-text gold-text" data-speed="-0.08">集中したい。</span>
             </h1>
-            <p class="reveal delay-200 text-lg md:text-2xl max-w-3xl mx-auto font-light tracking-widest mb-16 opacity-80">
+            <p class="reveal delay-200 text-base md:text-2xl max-w-3xl mx-auto font-light tracking-widest mb-12 md:mb-16 text-gray-100 px-4">
                 建築家を設計以外の負担から開放し、住宅設計に専念できるサポート。
             </p>
             <div class="reveal delay-500">
@@ -203,25 +202,27 @@
     </section>
 
     <!-- Problem Section -->
-    <section id="problem" class="py-32 px-6 max-w-7xl mx-auto">
+    <section id="problem" class="py-24 md:py-32 px-6 max-w-7xl mx-auto relative z-10">
         <span class="section-title text-center">01. 建築家の現実</span>
-        <div class="grid lg:grid-cols-2 gap-24 items-start">
-            <div class="sticky top-32">
-                <h2 class="font-heading text-4xl md:text-6xl mb-10 leading-tight">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            <!-- スマホ時にstickyを解除し、マージンを追加 -->
+            <div class="lg:sticky lg:top-32 mb-12 lg:mb-0 z-20">
+                <h2 class="font-heading text-4xl md:text-6xl mb-8 md:mb-10 leading-tight text-white">
                     本当は、<br>
                     <span class="text-highlight">「設計の話」</span>から<br>始めたい。
                 </h2>
-                <div class="space-y-8 text-xl text-gray-400 font-light leading-relaxed">
+                <div class="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-200 font-light leading-relaxed">
                     <p class="reveal">土地が決まらない。予算が曖昧。住宅ローンの調整に追われる。</p>
                     <p class="reveal delay-100">建築家の美意識が宿るべき住宅設計において、現実には設計以外の業務がその時間を確実に奪っていきます。</p>
                 </div>
             </div>
-            <div class="space-y-4">
+            
+            <div class="space-y-6">
                 <!-- 課題 01 -->
                 <div class="bento-card reveal group">
                     <span class="text-xs font-bold gold-text tracking-widest block mb-4">課題 01</span>
-                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition">設計時間の不足</h3>
-                    <p class="opacity-60 text-sm mb-6">本来注力すべきクリエイティブな時間を、設計業務以外によって削り取られていませんか？</p>
+                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition text-white">設計時間の不足</h3>
+                    <p class="text-gray-100 text-sm mb-6">本来注力すべきクリエイティブな時間を、設計業務以外によって削り取られていませんか？</p>
                     
                     <button onclick="toggleAccordion('problem-detail-01', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         詳細な構造的課題を見る
@@ -229,7 +230,7 @@
                     </button>
 
                     <div id="problem-detail-01" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light text-white leading-relaxed">
                             <p>住宅設計の現場では、建築家が「設計者」であると同時に、営業・資金相談・土地選定・調整役まで担っています。</p>
                             <p>本来、設計の質と調整能力は別物ですが、一人でアトリエを運営する場合、これらすべてをこなさなければ仕事が成立しません。この構造が設計時間の不足を招き、契約率の不安定さや、設計料を上げにくい状況を生み出しているのです。</p>
                             <p class="gold-text font-bold">これは個人の努力不足ではなく、現在の住宅設計における「構造的な問題」です。</p>
@@ -240,8 +241,8 @@
                 <!-- 課題 02 -->
                 <div class="bento-card reveal delay-100 group">
                     <span class="text-xs font-bold gold-text tracking-widest block mb-4">課題 02</span>
-                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition">契約率の不安定さ</h3>
-                    <p class="opacity-60 text-sm mb-6">設計力とは別の「営業力」や「資金調整力」の有無が、成約に影響してしまう現状。</p>
+                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition text-white">契約率の不安定さ</h3>
+                    <p class="text-gray-100 text-sm mb-6">設計力とは別の「営業力」や「資金調整力」の有無が、成約に影響してしまう現状。</p>
 
                     <button onclick="toggleAccordion('problem-detail-02', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         詳細な構造的課題を見る
@@ -249,7 +250,7 @@
                     </button>
 
                     <div id="problem-detail-02" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light text-white leading-relaxed">
                             <p>「優れた設計者」が必ずしも「優れた営業マン」である必要はありません。しかし現在の市場では、土地探しや住宅ローンの手続き、資金計画のプレゼン能力が契約の可否を大きく左右してしまっています。</p>
                             <p>クライアントは設計案の良し悪し以前に、実務的な不安が解消されないことで足踏みをしてしまいます。結果として、本来評価されるべき設計力が発揮される前に、プロジェクトが立ち消えになることも少なくありません。</p>
                             <p class="gold-text font-bold">私たちは設計以外の不安をプロとして解消し、あなたが「設計の質」で正当に選ばれる環境を整えます。</p>
@@ -260,8 +261,8 @@
                 <!-- 課題 03 -->
                 <div class="bento-card reveal delay-200 group">
                     <span class="text-xs font-bold gold-text tracking-widest block mb-4">課題 03</span>
-                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition">設計料に見合わない業務</h3>
-                    <p class="opacity-60 text-sm mb-6">近年住宅建築において建築家が負担する業務範囲が多くなり、本来の設計料以外の業務の負担が大きくなっています。</p>
+                    <h3 class="font-heading text-2xl mb-4 group-hover:gold-text transition text-white">設計料に見合わない業務</h3>
+                    <p class="text-gray-100 text-sm mb-6">近年住宅建築において建築家が負担する業務範囲が多くなり、本来の設計料以外の業務の負担が大きくなっています。</p>
 
                     <button onclick="toggleAccordion('problem-detail-03', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         詳細な構造的課題を見る
@@ -269,7 +270,7 @@
                     </button>
 
                     <div id="problem-detail-03" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-sm font-light text-white leading-relaxed">
                             <p>省エネ基準の適合義務化やBELS、ZEHへの対応、さらには複雑化する土地の権利調整や住宅ローンの折衝など、近年の住宅建築における「付随業務」は膨れ上がり続けています。</p>
                             <p>これらは本来の設計業務とは別物ですが、実態としては設計料の一部として扱われたり、サービスで行わざるを得ないケースが多々あります。その結果、本来のクリエイティブな仕事に対する報酬が相対的に削られ、アトリエの健全な経営や創作意欲を圧迫しています。</p>
                             <p class="gold-text font-bold">私たちはこれらの「設計以外の重責」を代行し、あなたの設計の価値を正当に保護します。</p>
@@ -281,23 +282,23 @@
     </section>
 
     <!-- Solution Section -->
-    <section id="solution" class="py-32 bg-white bg-opacity-[0.02] relative overflow-hidden">
+    <section id="solution" class="py-24 md:py-32 bg-white bg-opacity-[0.02] relative overflow-hidden">
         <div class="parallax-bg-text" id="bg-text-2" style="top: 10%; right: -10%;">DIVISION</div>
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24">
+            <div class="text-center mb-16 md:mb-24">
                 <span class="section-title">02. 私たちの役割</span>
-                <h2 class="font-heading text-4xl md:text-7xl mb-8">
+                <h2 class="font-heading text-4xl md:text-7xl mb-8 text-white">
                     「設計」と「設計以外」を<br>に分業する。
                 </h2>
-                <p class="text-xl opacity-60 font-light tracking-widest">地域ナビが建築家の「裏方」として、すべての煩雑な工程を担います。</p>
+                <p class="text-lg md:text-xl text-gray-100 font-light tracking-widest px-4">地域ナビが建築家の「裏方」として、すべての煩雑な工程を担います。</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
                 <!-- 01: 土地探し・条件整理 -->
                 <div class="bento-card reveal group">
                     <div class="text-4xl font-black opacity-10 mb-6">01</div>
-                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition">土地探し・条件整理</h3>
-                    <p class="text-sm opacity-60 leading-relaxed mb-6">土地選定や不動産業者への対応など、設計前の前提条件を整えます。</p>
+                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition text-white">土地探し・条件整理</h3>
+                    <p class="text-gray-100 text-sm leading-relaxed mb-6">土地選定や不動産業者への対応など、設計前の前提条件を整えます。</p>
                     
                     <button onclick="toggleAccordion('role-detail-01', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         サポートの詳細を見る
@@ -305,7 +306,7 @@
                     </button>
 
                     <div id="role-detail-01" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light text-white leading-relaxed">
                             <p>建築家が最も力を発揮すべき「設計」に入る前に、多くのプロジェクトが土地の問題や不動産業者とのやり取りで消耗しています。</p>
                             <p>地域ナビが不動産業者との折衝、法規的な予備調査、現地調査を代行。建築家の思想を理解したスタッフが先行して動くことで、設計者が本来のクリエイティビティを発揮できる「完璧な土俵」を整えた状態でプロジェクトをスタートさせます。</p>
                         </div>
@@ -315,8 +316,8 @@
                 <!-- 02: 資金計画・ローン -->
                 <div class="bento-card reveal delay-100 group">
                     <div class="text-4xl font-black opacity-10 mb-6">02</div>
-                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition">資金計画・ローン</h3>
-                    <p class="text-sm opacity-60 leading-relaxed mb-6">住宅ローン相談や資金シミュレーションなど、金銭面の不安を解消。</p>
+                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition text-white">資金計画・ローン</h3>
+                    <p class="text-gray-100 text-sm leading-relaxed mb-6">住宅ローン相談や資金シミュレーションなど、金銭面の不安を解消。</p>
 
                     <button onclick="toggleAccordion('role-detail-02', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         サポートの詳細を見る
@@ -324,7 +325,7 @@
                     </button>
 
                     <div id="role-detail-02" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light text-white leading-relaxed">
                             <p>施主にとって最大の懸念事項である「予算」と「ローン」。ここが曖昧なまま設計が進むと、実施設計後の予算オーバーによるプラン変更など、建築家にとって不本意な手戻りが発生します。</p>
                             <p>地域ナビの専門スタッフが、ライフプランに基づいた詳細な資金シミュレーションと最適な住宅ローンの選定をサポート。確固たる予算フレームを早期に確立することで、建築家は予算の顔色を伺いすぎることなく、本質的な設計提案に専念することが可能になります。</p>
                         </div>
@@ -334,8 +335,8 @@
                 <!-- 03: マインド育成 -->
                 <div class="bento-card reveal delay-200 group">
                     <div class="text-4xl font-black opacity-10 mb-6">03</div>
-                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition">マインド育成</h3>
-                    <p class="text-sm opacity-60 leading-relaxed mb-6">クライアントの要望を整理し、建築家への橋渡しを行うとともに、建築家との家づくりについて大切なマインドを育成します。</p>
+                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition text-white">マインド育成</h3>
+                    <p class="text-gray-100 text-sm leading-relaxed mb-6">クライアントの要望を整理し、建築家への橋渡しを行うとともに、建築家との家づくりについて大切なマインドを育成します。</p>
 
                     <button onclick="toggleAccordion('role-detail-03', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         サポートの詳細を見る
@@ -343,7 +344,7 @@
                     </button>
 
                     <div id="role-detail-03" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light text-white leading-relaxed">
                             <p>建築家との家づくりは、既製品を選ぶのとは根本的に異なります。クライアントがその価値を十分に理解し、共に創り上げる楽しさを知ることで、初めて最高の設計が生まれます。</p>
                             <p>地域ナビは、クライアントの要望の優先順位を丁寧に整理するだけでなく、建築家の役割や設計プロセスの醍醐味を事前にレクチャー。建築家への敬意と信頼に基づいた良好な関係性を醸成し、初回面談から本質的な対話ができる土壌を整えることで、設計者が100%のパフォーマンスを発揮できる環境を提供します。</p>
                         </div>
@@ -353,8 +354,8 @@
                 <!-- 04: 直接依頼案件のサポート -->
                 <div class="bento-card reveal delay-300 group">
                     <div class="text-4xl font-black opacity-10 mb-6">04</div>
-                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition">直接依頼案件のサポート</h3>
-                    <p class="text-sm opacity-60 leading-relaxed mb-6">私たちからの紹介案件だけでなく、建築家自らが受注した案件でも裏方実務をサポート可能。</p>
+                    <h3 class="font-heading text-xl mb-4 group-hover:gold-text transition text-white">直接依頼案件のサポート</h3>
+                    <p class="text-gray-100 text-sm leading-relaxed mb-6">私たちからの紹介案件だけでなく、建築家自らが受注した案件でも裏方実務をサポート可能。</p>
 
                     <button onclick="toggleAccordion('role-detail-04', this)" class="flex items-center text-xs font-bold tracking-[0.2em] gold-text hover:opacity-70 transition-opacity">
                         サポートの詳細を見る
@@ -362,7 +363,7 @@
                     </button>
 
                     <div id="role-detail-04" class="accordion-content">
-                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light opacity-80 leading-relaxed">
+                        <div class="pt-6 mt-6 border-t border-white border-opacity-10 space-y-4 text-xs font-light text-white leading-relaxed">
                             <p>私たちの役割は、単なる「案件紹介」にとどまりません。建築家ネットワーク・ナビの真の価値は、建築家の方々が抱えるすべてのプロジェクトにおいて、設計に専念できる環境をインフラとして提供することにあります。</p>
                             <p>先生がご自身のウェブサイトやご紹介で直接受けた案件においても、土地探し、資金計画、初期調整などの実務を地域ナビが「裏方」として代行可能です。組織に依存するのではなく、個人の創作活動を最大化するためのパートナーとして、私たちのリソースを自由にご活用ください。すべての住宅設計において、質を落とさず、無理なく続けられる仕組みがここにあります。</p>
                         </div>
@@ -373,39 +374,38 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-32 px-6">
+    <section id="faq" class="py-24 md:py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-8">
                 <div>
                     <span class="section-title mb-4">03. よくあるご質問</span>
-                    <h2 class="font-heading text-4xl md:text-6xl italic">FAQ</h2>
+                    <h2 class="font-heading text-4xl md:text-6xl italic text-white">FAQ</h2>
                 </div>
-                <p class="text-sm opacity-50 tracking-widest mb-2 font-bold uppercase">Transparency in Partnership</p>
+                <p class="text-sm text-gray-300 tracking-widest mb-2 font-bold uppercase hidden md:block">Transparency in Partnership</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Bento Layout for FAQ -->
                 <div class="bento-card md:col-span-2 reveal">
                     <h3 class="font-heading text-xl gold-text mb-6">Q. 営業代行組織ですか？</h3>
-                    <p class="font-light opacity-80">
+                    <p class="font-light text-white">
                         いいえ。営業の代行やノルマの押し付けは行いません。地域ナビは、建築家が設計に専念できるよう、土地・資金・調整といった「設計以外の実務」を裏方として支えるパートナーです。
                     </p>
                 </div>
                 <div class="bento-card reveal delay-100">
                     <h3 class="font-heading text-xl gold-text mb-6">Q. 手数料は？</h3>
-                    <p class="font-light opacity-80">
+                    <p class="font-light text-white text-sm leading-relaxed">
                         月会費はわずか550円/月。裏方としてのお仕事はクライアントに私たちが説明し直接いただきます。決して設計料を圧迫する仕組みではありません。
                     </p>
                 </div>
                 <div class="bento-card reveal delay-200">
                     <h3 class="font-heading text-xl gold-text mb-6">Q. 案件の選択は自由？</h3>
-                    <p class="font-light opacity-80">
+                    <p class="font-light text-white">
                         はい。登録したからといって私たちからの案件は必ず受ける必要はありません。ご自身の状況に合わせて関わり方を選択できます。
                     </p>
                 </div>
                 <div class="bento-card md:col-span-2 reveal delay-300">
                     <h3 class="font-heading text-xl gold-text mb-6">Q. 直接受けた案件もサポートしてくれますか？</h3>
-                    <p class="font-light opacity-80">
+                    <p class="font-light text-white">
                         可能です。当法人からの紹介案件だけでなく、建築家ご自身が直接受けた依頼に対しても、地域ナビが裏方として実務をフルサポートします。
                     </p>
                 </div>
@@ -414,17 +414,17 @@
     </section>
 
     <!-- Final CTA -->
-    <section id="contact" class="py-40 px-6 text-center relative overflow-hidden bg-[#243342]">
+    <section id="contact" class="py-32 md:py-40 px-6 text-center relative overflow-hidden bg-[#243342]">
         <div class="parallax-bg-text" id="bg-text-3" style="bottom: -5%; left: 0;">NEXT STANDARD</div>
         <div class="max-w-5xl mx-auto z-10 relative">
-            <h2 class="font-heading text-4xl md:text-7xl mb-12 leading-tight">
+            <h2 class="font-heading text-4xl md:text-7xl mb-12 leading-tight text-white px-2">
                 住宅の設計は<span class="gold-text">「チームワーク」</span>が<br>次のスタンダードです。
             </h2>
-            <p class="mb-16 text-xl md:text-2xl font-light opacity-70 tracking-widest">
+            <p class="mb-16 text-lg md:text-2xl font-light text-gray-100 tracking-widest px-4">
                 住宅設計を、無理なく、長く続けられる環境がここにあります。
             </p>
             
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center px-4">
                 <a href="http://a-netnavi.jp/entry/form/" class="cta-button w-full md:w-auto shadow-2xl">
                     登録建築家について問合せる
                     <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -435,7 +435,7 @@
 
     <footer class="py-16 border-t border-white border-opacity-5 px-8 text-center">
         <a href="http://a-netnavi.jp/" class="inline-flex flex-col items-center hover:opacity-70 transition-opacity group mb-8">
-            <span class="text-xl font-black tracking-tighter leading-none">
+            <span class="text-lg md:text-xl font-black tracking-tighter leading-none text-white">
                 （一社）建築家ネットワーク・ナビ
             </span>
             <span class="text-[10px] gold-text font-bold tracking-[0.3em] mt-2 flex items-center">
@@ -443,7 +443,7 @@
                 <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </span>
         </a>
-        <p class="text-[10px] tracking-[0.4em] opacity-30 uppercase">
+        <p class="text-[10px] tracking-[0.2em] md:tracking-[0.4em] text-gray-400 uppercase">
             &copy; 2012-2026 a-netnavi. Partnership Systems.
         </p>
     </footer>
